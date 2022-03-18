@@ -51,9 +51,13 @@ DynamicArray<NodeGraph::Node*> NodeGraph::findPath(Node* start, Node* goal)
 
 	while (openList.getLength() != 0)
 	{
+		for (int i = 0; i < openList[0]->edges.getLength(); i++)
+		{
 
+		}
 	}
-	
+
+	return reconstructPath(start, goal);
 }
 
 void NodeGraph::drawGraph(Node* start)
