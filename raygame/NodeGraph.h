@@ -35,5 +35,5 @@ namespace NodeGraph
 
 	void drawConnectedNodes(Node* node, DynamicArray<Node*>& drawnList);
 
-	void sortGScore();
+	void sortGScore(DynamicArray<NodeGraph::Node*>& nodes);
 }
