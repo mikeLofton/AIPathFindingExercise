@@ -50,12 +50,14 @@ DynamicArray<NodeGraph::Node*> NodeGraph::findPath(Node* start, Node* goal)
 	Node* currentNode = new Node();
 	DynamicArray<Node*> openList = DynamicArray<Node*>();
 	DynamicArray<Node*> closedList = DynamicArray<Node*>();
-
+	
 	openList.addItem(start);
+	
 
 	while (openList.getLength() > 0)
 	{
-		sortGScore(openList);
+		float hScore = manhattanDistance(start, goal);
+		sortFScore(openList);
 
 		currentNode = openList[0];
 
@@ -78,8 +80,6 @@ DynamicArray<NodeGraph::Node*> NodeGraph::findPath(Node* start, Node* goal)
 		openList.remove(openList[0]);
 		closedList.addItem(currentNode);
 	}
-
-	/*return reconstructPath(start, goal);*/
 }
 
 void NodeGraph::drawGraph(Node* start)
@@ -165,4 +165,9 @@ void NodeGraph::resetConnectedNodes(Node* node, DynamicArray<Node*>& resetList)
 			resetConnectedNodes(node->edges[i].target, resetList);
 		}
 	}
+}
+
+float NodeGraph::manhattanDistance(NodeGraph::Node* node, NodeGraph::Node* goal)
+{
+	return abs(node->position.x - goal->position.x) + abs(node->position.y - goal->position.y);
 }
