@@ -60,9 +60,7 @@ DynamicArray<NodeGraph::Node*> NodeGraph::findPath(Node* start, Node* goal)
 		currentNode = openList[0];
 
 		if (currentNode == goal)
-			return reconstructPath(start, goal);
-
-		
+			return reconstructPath(start, goal);	
 
 		for (int i = 0; i < openList[0]->edges.getLength(); i++)
 		{
